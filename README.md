@@ -1,64 +1,100 @@
-# Gamma vs. Hadron Event Classification – Project Overview
-Project Objective:
-The goal of this project is to classify Gamma and Hadron illnesses based on specific medical features extracted from patient data. By using machine learning techniques, particularly K-Nearest Neighbors (KNN), we aim to develop a model that can accurately differentiate between the two illness types.
+# **Gamma vs. Hadron Illness Classification – Project Overview**
 
-This classification can assist medical professionals in diagnosis and decision-making, ensuring that patients receive the appropriate treatment based on their illness category.
+## **1. Project Objective**
+The goal of this project is to classify **Gamma and Hadron illnesses** based on specific **medical features** extracted from patient data. By applying **machine learning techniques**, particularly **K-Nearest Neighbors (KNN)**, we aim to develop a model capable of accurately distinguishing between these two illness types.
 
-Dataset Description:
-The dataset contains several numerical features representing various medical and biological attributes of patients. These features are essential indicators that help in distinguishing between Gamma illnesses and Hadron illnesses.
+This classification can aid **medical professionals** in **diagnosis** and **decision-making**, ensuring that patients receive the appropriate treatment based on their illness category.
 
-Each record in the dataset includes:
-fLength – A specific measurement related to the illness progression.
-fWidth – A width-related characteristic of the illness.
-fSize – A measure of severity based on medical data.
-fConc – Concentration of a certain biomarker.
-fAsym – Asymmetry of a detected pattern in the illness.
-fM3long, fM3trans – Higher-order medical characteristics.
-fAlpha – An angular measurement related to the illness.
-fDist – Distance from a reference medical point.
-class – The target variable, where:
-1 represents Gamma illness.
-0 represents Hadron illness.
+---
 
+## **2. Dataset Description**
+The dataset consists of several **numerical medical and biological features** that serve as indicators for distinguishing between **Gamma** and **Hadron illnesses**.
 
-Project Workflow:
-1. Data Preprocessing
+### **Key Features:**
+- **fLength** – A measurement related to illness progression.
+- **fWidth** – A width-related characteristic of the illness.
+- **fSize** – A measure of severity based on medical data.
+- **fConc** – Concentration of a specific biomarker.
+- **fAsym** – Asymmetry of a detected pattern in the illness.
+- **fM3long, fM3trans** – Higher-order medical characteristics.
+- **fAlpha** – An angular measurement associated with the illness.
+- **fDist** – Distance from a reference medical point.
+- **class** – The target variable:
+  - **1** → Gamma illness.
+  - **0** → Hadron illness.
+
+---
+
+## **3. Project Workflow**
+
+### **3.1 Data Preprocessing**
 Before training the model, the dataset undergoes several preprocessing steps to ensure quality and consistency.
-a. Handling Class Imbalance
-Medical datasets often have imbalanced data, meaning one illness type may be more common than the other. To correct this, Random OverSampling is applied, which increases the number of samples in the minority class to ensure the model learns equally from both classes.
-b. Feature Scaling
-Since the dataset consists of numerical medical features with different ranges, they are standardized using StandardScaler to bring all values onto a similar scale. This improves the model’s ability to learn patterns without being biased by large numerical values.
-c. Splitting the Dataset
-To properly train and evaluate the model, the dataset is split into three parts:
-Training Set (60%) – Used to train the model.
-Validation Set (20%) – Used to fine-tune the model parameters.
-Test Set (20%) – Used to assess final model performance.
 
-2. Exploratory Data Analysis (EDA)
-Before training the model, it’s important to analyze the dataset to gain insights into how Gamma and Hadron illnesses differ.
-Feature Distribution Analysis – Histograms are plotted to visualize the probability distributions of each feature for both illness types. This helps in understanding which features contribute most to the classification.
-Correlation Analysis – Checking for relationships between features to identify the most relevant medical indicators.
-EDA allows us to make informed decisions about which features might be most useful for classification.
+#### **a. Handling Class Imbalance**
+Medical datasets often exhibit **imbalanced class distributions**, meaning one illness type is more prevalent than the other. To address this, **Random OverSampling** is applied to increase the number of samples in the minority class, ensuring a more balanced dataset for training.
 
-3. Model Selection and Training
-The K-Nearest Neighbors (KNN) algorithm is chosen for classification due to its simplicity and effectiveness. The model works as follows:
-Stores all training examples.
-When a new patient’s data is given, it finds the k nearest cases in the dataset.
-The illness type of the majority of these nearest neighbors is assigned to the new case.
-The model is trained using different values of k to determine the optimal number of neighbors for classification.
+#### **b. Feature Scaling**
+Since the dataset contains numerical features with varying ranges, **StandardScaler** is used to standardize all values. This step ensures that the model learns patterns effectively without being biased by large numerical values.
 
-4. Model Evaluation
-After training, the model is tested using validation and test data. Several evaluation metrics are used to measure performance:
-Accuracy – The percentage of correctly classified illness cases.
-Precision – Measures how many of the predicted Gamma (or Hadron) illness cases were actually correct.
-Recall – Measures how many actual Gamma (or Hadron) illness cases were correctly identified.
-F1-Score – A balanced metric that considers both precision and recall.
-These metrics help assess whether the model is reliable enough for real-world medical applications.
+#### **c. Splitting the Dataset**
+To train and evaluate the model, the dataset is divided into three subsets:
+- **Training Set (60%)** – Used to train the model.
+- **Validation Set (20%)** – Used for fine-tuning model parameters.
+- **Test Set (20%)** – Used to evaluate final model performance.
+
+---
+
+### **3.2 Exploratory Data Analysis (EDA)**
+Before training the model, **data analysis techniques** are used to better understand the dataset and distinguish patterns between Gamma and Hadron illnesses.
+
+#### **Key EDA Steps:**
+- **Feature Distribution Analysis** – Histograms are plotted to visualize the probability distributions of each feature for both illness types. This helps identify which features contribute most to classification.
+- **Correlation Analysis** – Examining relationships between different features to identify the most relevant medical indicators for classification.
+
+EDA provides valuable insights that guide **feature selection** and **model optimization**.
+
+---
+
+### **3.3 Model Selection and Training**
+The **K-Nearest Neighbors (KNN) algorithm** is chosen due to its **simplicity and effectiveness** in classification tasks. The model follows these steps:
+1. **Storing Training Examples** – The model retains all training data points.
+2. **Finding the k Nearest Neighbors** – When a new patient’s data is provided, the model identifies the **k** closest cases in the dataset.
+3. **Classifying the New Case** – The illness type is determined based on the majority class among the **k** nearest neighbors.
+
+Different values of **k** are tested to determine the optimal number of neighbors for classification.
+
+---
+
+### **3.4 Model Evaluation**
+Once the model is trained, it is tested using **validation and test data**. Several performance metrics are used to assess its accuracy and reliability:
+
+#### **Evaluation Metrics:**
+- **Accuracy** – The model achieves an accuracy of **91%**, meaning it correctly classifies **91% of illness cases**.
+- **Precision** – Measures how many predicted Gamma (or Hadron) illness cases were actually correct.
+- **Recall** – Measures how many actual Gamma (or Hadron) illness cases were correctly identified.
+- **F1-Score** – A balanced metric that considers both **precision and recall**, providing a more comprehensive evaluation.
+
+These metrics help determine if the model is **suitable for real-world medical applications**.
+
+---
+
+## **4. Conclusion**
+This project demonstrates the application of **machine learning** in the **medical field** for **illness classification**. By:
+- **Preprocessing the data**,
+- **Balancing the class distribution**,
+- **Applying KNN classification**,
+
+the model effectively differentiates between **Gamma and Hadron illnesses**, achieving an accuracy of **91%**.
+
+### **Future Improvements:**
+To enhance performance, future iterations of the project could explore **more advanced machine learning models**, such as:
+- **Support Vector Machines (SVM)**
+- **Random Forests**
+- **Neural Networks**
+
+These models may offer **higher accuracy and reliability**, making the classification system even more effective for medical diagnosis.
+
+---
 
 
-
-Conclusion:
-This project demonstrates how machine learning can be applied in the medical field to classify illnesses based on extracted features. By preprocessing the data, balancing the classes, and applying KNN classification, the model successfully distinguishes between Gamma and Hadron illnesses.
-
-Future improvements could include testing advanced models such as Support Vector Machines (SVM), Random Forests, or Neural Networks to achieve even higher accuracy and reliability in classification.
 
