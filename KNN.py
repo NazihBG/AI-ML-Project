@@ -17,9 +17,6 @@ for label in df.columns[:-1]:
   
 
 
-
-
-###train , valid , test = np.split(df.sample(frac=1), [int(0.6*len(df)),int (0.8*len(df))])
 train, valid, test = np.split(df.sample(frac=1).reset_index(drop=True), [int(0.6*len(df)), int(0.8*len(df))])
 
 
@@ -43,31 +40,13 @@ train , xtrain , ytrain=scale_dataset(train,oversampler=True)
 valid , xvalid , yvalid=scale_dataset(valid,oversampler=False)
 test , xtest , ytest=scale_dataset(test,oversampler=False)
 
-
-
-
-
-
-len(ytrain)
-
-
-
-
-
-sum (ytrain==1)
-
-
-
 # K N N (k nearest neighbors)
-
-
-
 
 from sklearn.neighbors import KNeighborsClassifier
 
-
-
-
-
 knn_model=KNeighborsClassifier(n_neighbors=1)
 knn_model.fit(xtrain,ytrain)
+
+ypred=knn_model.predict(xtest)
+print(ypred)
+print(classification_report(ytest,ypred))
