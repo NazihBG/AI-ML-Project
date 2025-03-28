@@ -95,6 +95,8 @@ To enhance performance, future iterations of the project could explore **more ad
 These models may offer **higher accuracy and reliability**, making the classification system even more effective for medical diagnosis.
 
 ---
+# contributions 
+__Contributions are always welcome.__
 
 
 
